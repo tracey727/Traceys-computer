@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#111111" />
+  <meta name="description" content="Ask OpenAI, Claude and Gemini together, then combine their strongest answers." />
+  <title>GENEVIEVE Super Response</title>
+  <link rel="icon" href="/assets/ga-mark.svg" type="image/svg+xml" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="background-glow glow-one"></div>
+  <div class="background-glow glow-two"></div>
+
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="GENEVIEVE Super Response home">
+      <img src="/assets/ga-mark.svg" alt="GENEVIEVE App emblem" />
+      <span>
+        <strong>GENEVIEVE</strong>
+        <small>SUPER RESPONSE</small>
+      </span>
+    </a>
+    <div id="connectionBadge" class="connection-badge">Checking setup…</div>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero">
+      <div class="eyebrow">THREE PERSPECTIVES · ONE STRONGER ANSWER</div>
+      <h1>Ask once.<br /><span>Compare intelligently.</span></h1>
+      <p>Send one question securely to the AI providers you choose. The app gathers their answers in parallel and produces one clear combined response.</p>
+    </section>
+
+    <section class="composer-card" aria-labelledby="ask-heading">
+      <div class="section-heading">
+        <div>
+          <span class="step-number">01</span>
+          <h2 id="ask-heading">Your question</h2>
+        </div>
+        <span id="characterCount" class="character-count">0 / 12,000</span>
+      </div>
+
+      <form id="questionForm">
+        <label class="sr-only" for="question">Question</label>
+        <textarea id="question" name="question" maxlength="12000" placeholder="Ask a detailed question here…" required></textarea>
+
+        <div class="settings-grid">
+          <fieldset>
+            <legend>Models to consult</legend>
+            <label class="provider-toggle openai-toggle">
+              <input type="checkbox" name="provider" value="openai" checked />
+              <span class="provider-dot">O</span>
+              <span><strong>OpenAI</strong><small id="openaiModel">Model</small></span>
+              <em id="openaiState">Checking</em>
+            </label>
+            <label class="provider-toggle anthropic-toggle">
+              <input type="checkbox" name="provider" value="anthropic" checked />
+              <span class="provider-dot">C</span>
+              <span><strong>Claude</strong><small id="anthropicModel">Model</small></span>
+              <em id="anthropicState">Checking</em>
+            </label>
+            <label class="provider-toggle gemini-toggle">
+              <input type="checkbox" name="provider" value="gemini" checked />
+              <span class="provider-dot">G</span>
+              <span><strong>Gemini</strong><small id="geminiModel">Model</small></span>
+              <em id="geminiState">Checking</em>
+            </label>
+          </fieldset>
+
+          <div class="synthesis-setting">
+            <label for="synthesisProvider">Final answer editor</label>
+            <select id="synthesisProvider" name="synthesisProvider">
+              <option value="auto">Automatic best available</option>
+              <option value="openai">OpenAI</option>
+              <option value="anthropic">Claude</option>
+              <option value="gemini">Gemini</option>
+            </select>
+            <p>The final editor combines successful answers. If synthesis fails, the app still returns the first successful answer.</p>
+          </div>
+        </div>
+
+        <div id="accessCodeWrap" class="access-code-wrap hidden">
+          <label for="accessCode">Private access code</label>
+          <input id="accessCode" type="password" autocomplete="current-password" placeholder="Enter the code set in Vercel" />
+          <small>This protects your provider API accounts when the Vercel address is online.</small>
+        </div>
+
+        <div class="form-footer">
+          <p>API keys stay on the server and are never sent to the browser.</p>
+          <button id="submitButton" type="submit">
+            <span>Build Super Response</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <section id="progressSection" class="progress-card hidden" aria-live="polite">
+      <div class="spinner" aria-hidden="true"></div>
+      <div>
+        <strong id="progressTitle">Consulting selected models…</strong>
+        <p id="progressText">Responses run in parallel. The final synthesis begins when they finish.</p>
+      </div>
+    </section>
+
+    <section id="errorSection" class="error-card hidden" role="alert">
+      <strong id="errorTitle">Unable to create response</strong>
+      <p id="errorText"></p>
+    </section>
+
+    <section id="resultsSection" class="results-section hidden">
+      <div class="section-heading results-heading">
+        <div>
+          <span class="step-number">02</span>
+          <h2>Model responses</h2>
+        </div>
+        <span id="timingLabel" class="timing-label"></span>
+      </div>
+      <div id="answerGrid" class="answer-grid"></div>
+
+      <article class="final-card">
+        <div class="final-card-header">
+          <div>
+            <span class="super-label">SUPER RESPONSE</span>
+            <h2>Combined answer</h2>
+            <p id="finalMeta"></p>
+          </div>
+          <button id="copyButton" class="copy-button" type="button">Copy answer</button>
+        </div>
+        <div id="finalAnswer" class="response-text"></div>
+        <div id="finalWarning" class="final-warning hidden"></div>
+      </article>
+    </section>
+
+    <section class="privacy-note">
+      <strong>Important:</strong> AI responses can be incomplete or wrong. Verify legal, medical, financial, safety and other important information with an appropriately qualified person. Each provider may charge your API account for usage.
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Tracey Ann Kennedy · GENEVIEVE App™</span>
+    <span>Built for secure server-side API use</span>
+  </footer>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

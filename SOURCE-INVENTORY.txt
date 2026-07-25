@@ -1,0 +1,27 @@
+./.env.example
+./.github/workflows/ci.yml
+./.gitignore
+./DEPLOYMENT-CHECKLIST.md
+./LICENSE.md
+./README.md
+./SECURITY.md
+./SOURCE-INVENTORY.txt
+./START-GENEVIEVE.bat
+./TEST-BEFORE-DEPLOY.bat
+./api/health.js
+./api/super-response.js
+./app.js
+./assets/ga-mark.svg
+./index.html
+./lib/super-response.js
+./manifest.webmanifest
+./package-lock.json
+./package.json
+./scripts/check.mjs
+./server.mjs
+./service-worker.js
+./styles.css
+./tests/super-response.test.js
+./vercel.json
+
+Generated: 25 July 2026 (Australia/Brisbane)
