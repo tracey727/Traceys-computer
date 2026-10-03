@@ -1,3 +1,5 @@
+> **Historical / reference web build.** This repository is an earlier GENEVIEVE Super Response web package. Latest web-lineage source: [genevieve-super-response.](https://github.com/tracey727/genevieve-super-response.). Keep this code for provenance and recovery; do not use its Vercel deployment instructions as the current ON TRACK by TRACE deployment standard.
+
 # GENEVIEVE Super Response
 
 A secure, GitHub-ready and Vercel-ready web application that asks OpenAI, Anthropic Claude and Google Gemini the same question in parallel, then uses one available provider to create a single combined answer.
